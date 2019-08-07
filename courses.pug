@@ -1,0 +1,29 @@
+extends layout
+
+block content
+	h1 Все курсы Академии
+	a.btn.btn-primary(href="/courses/add") Создать новый курс
+	table.table.table-striped
+		thead
+			tr
+				th Id курса
+				th курс
+				th
+				th
+			tbody
+				each course in courses
+					tr
+						td= course.id
+						td= course.name
+						td(style="width: 50px;"): a(href="/courses/edit" + course.id)
+							span.glyphicon.glyphicon-pencil
+						td(style="width: 50px;"): a(href="/courses/delete" + course.id)
+							span.glyphicon.glyphicon-remove
+
+	form(method="post")
+		fieldest.form-group
+		label(for="name") Name
+		input.form-control(name="name", id="name", type="text", placeholder="Введите имя курса", value-course.name)
+		small.text-muted Добавьте свой курс.
+	button.btn.btn-primary(type="submit") Сохранить курс
+	a.btn.btn-default(href="/courses") Отмена
