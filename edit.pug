@@ -4,9 +4,10 @@ block content
 	h1 Все курсы Академии
 
 	form(method="post")
-		fieldest.form-group
-		label(for="name") Name
-		input.form-control(name="name", id="name", type="text", placeholder="Введите имя курса", value-course.name)
+		fieldset.form-group
+		label(for="name") Name:
+		input.form-control(name="name", id="name", type="text", placeholder="Введите имя курса", value=course.name)
 		small.text-muted Добавьте свой курс.
-	button.btn.btn-primary(type="submit") Сохранить курс
+	button.btn.btn-primary(type='submit') Сохранить курс
 	a.btn.btn-default(href="/courses") Отмена
+

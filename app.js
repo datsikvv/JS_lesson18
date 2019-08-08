@@ -28,10 +28,11 @@ app.get('/courses/add', function (req, res) {
 	res.render('add');
 });
 
-app.post('/api/courses/add', function (req, res) {
+app.post('/courses/add', function (req, res) {
 	var course = {
-		name: req.bode.name,
-		id: Date.now()
+		id: Date.now(),
+		name: req.body.name
+		
 	};
     courses.push(course);
 
@@ -51,11 +52,12 @@ app.get('/courses/edit/:id', function(req, res) {
 	res.render('edit', { course: course });
 });
 
-app.post('/courses/edit/:id', function ( req, res) {
+app.post('/courses/edit/:id', function (req, res) {
 	var course = courses.find(function (course) {
 		return course.id === parseInt(req.params.id);
 	});
-	if(!course){
+
+	if(!course) {
 		res.sendStatus(404);
 		return;
 	}
@@ -65,7 +67,7 @@ app.post('/courses/edit/:id', function ( req, res) {
 	res.redirect('/courses');
 });
 
-app.get('courses/delete/:id', function (req, res) {
+app.get('/courses/delete/:id', function (req, res) {
 
 	courses = courses.filter(function (course) {
 		return course.id !== parseInt(req.params.id);
